@@ -60,8 +60,8 @@ const char * fuseName[] = {"Low  Fuse Bits", "High Fuse Bits",
 byte fuseValue[4] = {0xdf,0x62,0xff,0xff};
 
 byte chipId = 255;
-long signature=0;
-chipSpec_t *chip;
+long signature = 0;
+chipSpec_t const *chip;
 
 void setup()  // run once, when the sketch starts
 {
@@ -272,9 +272,9 @@ void ditectChip()
 {
   int i;
   displaySignature();
-  for(i = 0;i<(sizeof(chipList)/sizeof(chipSpec_t));i++){
+  for(i = 0; i < (int)(sizeof(chipList)/sizeof(chipSpec_t)); i++){
     chip = &chipList[i];
-    if(signature == pgm_read_dword(&chip->signature)) {
+    if(signature == (long)pgm_read_dword(&chip->signature)) {
       chipId = i;
       break;
     }
@@ -569,10 +569,10 @@ void flushSerial()
 
 void printTarget(){
   char c;
-  char *f = chip->chipName;
+  char const *f = chip->chipName;
   while(1){
     c = pgm_read_byte(f);
-    if(c == NULL) break;
+    if(c == (char)NULL) break;
     Serial.write(c);
     f++;
   }
