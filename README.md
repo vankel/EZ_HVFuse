@@ -2,6 +2,8 @@
 AVR Fuse Rescue for ATmega48/88/168/328 based on Arduino-based AVR High Voltage Programmer by Jeff Keyzer W6OHM aka @ mightyohm.
 
 ## Schematics
+* R1, R4: 1kOhm
+* R2, R3: 1k to 10kOhm
 ![AVR Fuse Rescue Schematics](https://raw.githubusercontent.com/vankel/EZ_HVFuse/master/schematics/EZ_HVFuse_Sch.png)
 
 ## How To Use
